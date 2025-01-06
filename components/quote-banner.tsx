@@ -1,53 +1,69 @@
 "use client"
-
-import { useEffect, useState } from 'react'
+import { Clock, Gift, Users, Trophy } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { off } from 'process'
 
-export function QuoteBanner() {
-  const [offset, setOffset] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setOffset(window.pageXOffset)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [offset,setOffset])
-
+export  function StatsBanner() {
   return (
-    <section className="relative h-[400px] overflow-hidden">
-      {/* Background Image with Parallax Effect */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url("assets/banner.jpg")',
-          transform: `translateY(${offset * 0.5}px)`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60" />
+    <div className="relative w-full overflow-hidden">
+      {/* Background overlay */}
+      <div className="absolute inset-0 bg-black/60 z-10" />
+      
+      {/* Content */}
+      <div className="relative z-20 w-full px-4 py-12 md:py-16">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+            {/* Working Hours */}
+            <div className="flex flex-col items-center gap-2">
+              <Clock className="w-8 h-8 mb-2 opacity-90" />
+              <div className="text-4xl md:text-5xl font-bold">3500</div>
+              <div className="text-sm md:text-base font-medium opacity-90">Working Hours</div>
+            </div>
+
+            {/* Completed Projects */}
+            <div className="flex flex-col items-center gap-2">
+              <Gift className="w-8 h-8 mb-2 opacity-90" />
+              <div className="text-4xl md:text-5xl font-bold">29</div>
+              <div className="text-sm md:text-base font-medium opacity-90">Completed Projects</div>
+            </div>
+
+            {/* Happy Clients */}
+            <div className="flex flex-col items-center gap-2">
+              <Users className="w-8 h-8 mb-2 opacity-90" />
+              <div className="text-4xl md:text-5xl font-bold">25</div>
+              <div className="text-sm md:text-base font-medium opacity-90">Happy Clients</div>
+            </div>
+
+            {/* Awards */}
+            <div className="flex flex-col items-center gap-2">
+              <Trophy className="w-8 h-8 mb-2 opacity-90" />
+              <div className="text-4xl md:text-5xl font-bold">2</div>
+              <div className="text-sm md:text-base font-medium opacity-90">Awards</div>
+            </div>
+          </div>
+
+          {/* Contact Button */}
+          <div className="flex justify-center mt-12">
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-colors"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Contact Us
+            </Button>
+          </div>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative h-full flex flex-col items-center justify-center text-white px-4">
-        <blockquote className="max-w-4xl mx-auto text-center mb-8">
-          <p className="text-2xl md:text-4xl font-semibold leading-tight">
-            "Engineering Is The Closest Thing To Magic That Exists In The World."
-          </p>
-          <footer className="mt-4 text-lg md:text-xl">
-            – Elon Musk.
-          </footer>
-        </blockquote>
-        
-        <Button 
-          variant="outline" 
-          className="bg-white text-gray-900 hover:bg-gray-100"
-          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          Contact Now
-        </Button>
-      </div>
-    </section>
+      {/* Background image */}
+      <img
+        src="/assets/info.jpg"
+        alt="Background"
+        className="absolute inset-0 object-cover w-full h-full -z-10"
+        width={1920}
+        height={400}
+      />
+    </div>
   )
 }
 

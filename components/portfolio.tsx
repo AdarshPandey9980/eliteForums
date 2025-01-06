@@ -1,7 +1,7 @@
 import {
-  Database,
-  ArrowUpNarrowWide,
-  Camera,
+  Shield,
+  BookOpenCheck,
+  School
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
@@ -9,24 +9,24 @@ import Image from "next/image";
 export function Portfolio() {
   const services = [
     {
-      icon: <Database className="w-12 h-12 text-white hover:text-cyan-400" />,
-      title: "Customer Relationship Management",
+      icon: <School className="w-12 h-12 text-white hover:text-cyan-400" />,
+      title: "Digi Sir: AI-Powered SaaS for Classroom, Institution, and Coaching Management Software",
       description:
-        "Customer Relationship Management (CRM) is a strategy for managing interactions with current and potential customers. It uses data analysis about customers' history with a company to improve business relationships, specifically focusing on customer retention and ultimately driving sales growth. CRM systems help streamline processes and enhance customer satisfaction.",
+        "Digi Sir is an advanced platform designed to streamline classroom and institution management. It offers features like attendance tracking, fee management, scheduling, and performance analytics. With AI-powered insights, it helps educators and administrators enhance operational efficiency, improve student engagement, and create data-driven strategies for academic success.",
     },
     {
       icon: (
-        <ArrowUpNarrowWide className="w-12 h-12  text-white hover:text-cyan-400" />
+        <Shield className="w-12 h-12  text-white hover:text-cyan-400" />
       ),
-      title: "Indoor positioning system",
+      title: "TacTik: SaaS for Security Guard Management",
       description:
-        "AIndoor Positioning Systems (IPS) locate and track objects or people within indoor environments using various technologies like Wi-Fi, Bluetooth, RFID, or sensors. IPS provides navigation assistance, asset tracking, and analytics for businesses, enhancing user experiences in venues like airports, malls, and hospitals, where GPS is unreliable.",
+        "TacTik is a comprehensive solution to manage security guards and their operations. From scheduling shifts, tracking attendance, and managing payroll to generating detailed reports, TacTik simplifies workforce management for security agencies. Its intuitive interface and automation features ensure efficient task execution and improved staff coordination.",
     },
     {
-      icon: <Camera className="w-12 h-12  text-white hover:text-cyan-400" />,
-      title: "Event Management Application",
+      icon: <BookOpenCheck className="w-12 h-12  text-white hover:text-cyan-400" />,
+      title: "PrepAI: AI-Powered Interview Training and Simulation Platform",
       description:
-        "Event Management Applications facilitate planning, organizing, and executing events efficiently. They offer features like attendee management, scheduling, budgeting, and promotion tools. These apps streamline communication between organizers, vendors, and attendees, enhancing coordination and ensuring seamless event experiences.",
+        "PrepAI is an innovative platform designed to prepare individuals for job interviews. Leveraging cutting-edge AI, it provides personalized mock interviews, feedback on answers, and tips for improvement. The platform also simulates real-world interview scenarios, helping candidates build confidence and excel in their careers.",
     },
   ];
 
@@ -35,7 +35,7 @@ export function Portfolio() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="inline-flex items-center text-3xl font-bold text-[#002e5f]">
-            <span className="mt-[30px] text-4xl">⌞</span>
+            <span className="mt-[18px] text-4xl">⌞</span>
             Our Projects
             <span className="ml-1 text-4xl">⌝</span>
           </h2>
@@ -56,7 +56,7 @@ export function Portfolio() {
               className="bg-white shadow-lg hover:shadow-xl transition-shadow "
             >
               <CardContent className="p-6 text-center">
-                <div className="w-24 h-24 rounded-full mx-auto w-[70px] h-[70px] mb-3 bg-gray-900 hover:text-white transition-colors rounded-full justify-center text-center flex">
+                <div className="w-24 h-24 rounded-full mx-auto w-[70px] h-[70px] mb-3 bg-gray-900 hover:text-white transition-colors rounded-full justify-center text-center flex cursor-pointer">
                   <span className="flex justify-center mt-[10px]">
                     {" "}
                     {service.icon}

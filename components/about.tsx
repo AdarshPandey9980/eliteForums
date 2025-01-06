@@ -6,7 +6,7 @@ export function About() {
       <div className="container mx-auto px-4 text-center">
         <div className="mb-12">
         <h2 className="inline-flex items-center text-3xl font-bold text-[#002e5f]">
-          <span className="mt-[30px] text-4xl">⌞</span>
+          <span className="mt-[18px] text-4xl">⌞</span>
             About us
             <span className="ml-1 text-4xl">⌝</span>
           </h2>

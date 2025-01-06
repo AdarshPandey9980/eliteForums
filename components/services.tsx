@@ -55,7 +55,7 @@ export function Services() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="inline-flex items-center text-3xl font-bold text-[#002e5f]">
-            <span className="mt-[30px] text-4xl">⌞</span>
+            <span className="mt-[18px] text-4xl">⌞</span>
             Services
             <span className="ml-1 text-4xl">⌝</span>
           </h2>
@@ -78,7 +78,7 @@ export function Services() {
               className="bg-white shadow-lg hover:shadow-xl transition-shadow "
             >
               <CardContent className="p-6 text-center">
-                <div className="w-24 h-24 rounded-full mx-auto w-[70px] h-[70px] mb-3 bg-gray-900 hover:text-white transition-colors rounded-full justify-center text-center flex">
+                <div className="w-24 h-24 rounded-full mx-auto w-[70px] h-[70px] mb-3 bg-gray-900 hover:text-white transition-colors rounded-full justify-center text-center flex cursor-pointer">
                  <span className="flex justify-center mt-[10px]"> {service.icon}</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-4">{service.title}</h3>

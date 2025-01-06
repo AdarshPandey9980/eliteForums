@@ -2,9 +2,9 @@ import { Navigation } from '@/components/navigation'
 import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
 import { Services } from '@/components/services'
-import { QuoteBanner } from '@/components/quote-banner'
-import { Team } from '@/components/team'
-import { Clients } from '@/components/clients'
+import {StatsBanner} from '@/components/quote-banner'
+import  {Team}  from '@/components/team'
+import  {Clients}  from '@/components/clients'
 import { FAQ } from '@/components/faq'
 import { Contact } from '@/components/contact'
 import { Footer } from '@/components/footer'
@@ -18,7 +18,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <QuoteBanner />
+      <StatsBanner />
       <Portfolio/>
       <Clients />
       <Team />

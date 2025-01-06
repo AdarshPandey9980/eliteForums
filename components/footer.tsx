@@ -1,7 +1,28 @@
-import Link from 'next/link'
+"use client"
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
 
 export function Footer() {
+
+  const social: any = [
+    {
+      icon:Facebook,
+      url:"https://www.facebook.com/people/Elite-Forums/100093019214718/"
+    },
+    {
+      icon:Twitter,
+      url:"https://x.com/elite_forums"
+    },
+    {
+      icon:Instagram,
+      url:"https://www.instagram.com/eliteforums"
+    },
+    {
+      icon:Linkedin,
+      url:"https://www.linkedin.com/company/eliteforums"
+    },
+
+  ]
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -20,9 +41,11 @@ export function Footer() {
             <ul className="space-y-2">
               {['Home', 'About', 'Services', 'Portfolio', 'Team', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link href={`/${item.toLowerCase()}`} className="text-gray-400 hover:text-white transition-colors">
+                  <div onClick={() => {
+                      document.getElementById(item.toLocaleLowerCase())?.scrollIntoView({ behavior: 'smooth' })
+                    }} className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     {item}
-                  </Link>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -67,13 +90,15 @@ export function Footer() {
               © {new Date().getFullYear()} Elite Forums. All rights reserved.
             </p>
             <div className="flex gap-6">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
+              {social.map((social:any) => (
                 <a
-                  key={index}
-                  href="#"
+                  key={social.url}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-400 hover:text-cyan-400 transition-colors"
                 >
-                  <Icon className="h-5 w-5" />
+                  <social.icon className="h-5 w-5" />
                 </a>
               ))}
             </div>

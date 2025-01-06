@@ -1,96 +1,102 @@
-"use client"
+'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import { Card } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
 
-const clients = [
+interface Client {
+  name: string
+  logo: string
+}
+
+const clients: Client[] = [
   {
-    name: "client1",
-    logo: "/assets/client1.png"
+    name: "Kemet Works",
+    logo: "/assets/client1.png",
   },
   {
-    name: "client2",
-    logo: "/assets/client2.png"
+    name: "Beyond HR",
+    logo: "/assets/client2.png",
   },
   {
-    name: "client3",
-    logo: "/assets/client3.png"
+    name: "Averance",
+    logo: "/assets/client3.png",
   },
   {
-    name: "client4",
-    logo: "/assets/client4.png"
+    name: "Client 4",
+    logo: "/assets/client4.png",
   },
   {
-    name: "client5",
-    logo: "/assets/client5.png"
+    name: "Client 5",
+    logo: "/assets/client5.png",
   }
 ]
 
 export function Clients() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % clients.length)
-    }, 3000)
-    return () => clearInterval(timer)
-  }, [])
+  const [api] = useEmblaCarousel(
+    { 
+      loop: true,
+      align: 'start',
+      slidesToScroll: 1,
+    },
+    [Autoplay({ delay: 1500, stopOnInteraction: false })]
+  )
 
   return (
-    <section className="py-20 bg-white" id='clients'>
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-white">
+      <div className="container px-4 mx-auto">
+        {/* Section Title */}
         <div className="text-center mb-16">
-        <h2 className="inline-flex items-center text-3xl font-bold text-[#002e5f]">
-          <span className="mt-[30px] text-4xl">⌞</span>
+          <div className="relative inline-block">
+            <h2 className="inline-flex items-center text-3xl font-bold text-[#002e5f]">
+            <span className="mt-[18px] text-4xl">⌞</span>
             Our Clients
             <span className="ml-1 text-4xl">⌝</span>
           </h2>
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <p className="text-xl text-gray-600">
+          </div>
+          <p className="text-xl text-gray-600 mt-6 max-w-2xl mx-auto">
             We Don't Just Build Softwares, We Build Your Business.
           </p>
         </div>
 
-        <div className="relative max-w-5xl mx-auto">
-          <div className="overflow-hidden">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
+        {/* Clients Carousel */}
+        <div className="max-w-6xl mx-auto">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 2000,
+              }),
+            ]}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
               {clients.map((client, index) => (
-                <div
-                  key={index}
-                  className="min-w-full flex justify-center items-center px-4"
-                >
-                  <Card className="w-64 h-32 flex items-center justify-center p-6">
-                    <Image
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/4">
+                  <Card className="p-6 flex items-center justify-center h-32 border-none shadow-sm hover:shadow-md transition-shadow">
+                    <img
                       src={client.logo}
                       alt={client.name}
-                      width={200}
-                      height={100}
-                      className="max-w-full max-h-full object-contain"
+                      className="max-w-[160px] max-h-[60px] object-contain"
                     />
                   </Card>
-                </div>
+                </CarouselItem>
               ))}
-            </div>
-          </div>
-
-          <div className="flex justify-center mt-8 space-x-2">
-            {clients.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                  currentSlide === index ? 'bg-primary' : 'bg-gray-300'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+            </CarouselContent>
+            {/* <CarouselPrevious className="hidden md:flex" /> */}
+            {/* <CarouselNext className="hidden md:flex" /> */}
+          </Carousel>
         </div>
       </div>
     </section>
